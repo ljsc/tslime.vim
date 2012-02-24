@@ -7,6 +7,7 @@ if exists("g:tslime_loaded")
 endif
 
 let g:tslime_loaded = 1
+let g:tslime_send_prefix = ""
 
 " Main function.
 " Use it in your script if you want to send text to a tmux session.
@@ -56,8 +57,8 @@ function! s:Tmux_Vars()
 endfunction
 
 function! To_Tmux()
-  let b:text = input("tmux:", "", "custom,")
-  call Send_to_Tmux(b:text . "\n")
+  let b:text = input("tmux: ", "", "custom,")
+  call Send_to_Tmux(g:tslime_send_prefix . b:text . "\n")
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
